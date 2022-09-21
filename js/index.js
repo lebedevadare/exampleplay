@@ -6,7 +6,7 @@ const {webkit, chromium, firefox} = require('playwright');
       headless: false,
     });
     const page = await browser.newPage();
-    await page.goto('https://github.com/microsoft/playwright');
+    await page.goto('https://think24.center');
     await page.screenshot({
       path: `screenshot-${browserType.name()}.png`,
     });
