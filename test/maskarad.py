@@ -1,6 +1,6 @@
 from playwright.sync_api import Playwright, sync_playwright, expect
 def run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=False, slow_mo=500)
     context = browser.new_context()
     # Open new page
     page = context.new_page()
@@ -54,9 +54,9 @@ def run(playwright: Playwright) -> None:
     page.locator("input[name=\"password\"]").press("Enter")
     page.wait_for_url("https://maskarad-grim.ru/client_account/session")
 
-    assert page.is_visible("text=У меня уже есть аккаунт")
+    # assert page.is_visible("text=У меня уже есть аккаунт")
     # ---------------------
     context.close()
     browser.close()
-# with sync_playwright() as playwright:
-#     run(playwright)
+with sync_playwright() as playwright:
+    run(playwright)
