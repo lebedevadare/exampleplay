@@ -53,8 +53,10 @@ def run(playwright: Playwright) -> None:
     # Press Enter
     page.locator("input[name=\"password\"]").press("Enter")
     page.wait_for_url("https://maskarad-grim.ru/client_account/session")
+
+    assert page.is_visible("text=У меня уже есть аккаунт")
     # ---------------------
     context.close()
     browser.close()
-with sync_playwright() as playwright:
-    run(playwright)
+# with sync_playwright() as playwright:
+#     run(playwright)
